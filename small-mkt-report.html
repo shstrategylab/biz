@@ -70,9 +70,14 @@
   .hero {
     min-height: 100vh;
     display: flex; flex-direction: column; justify-content: center;
+    align-items: center;
     padding: 8rem 2.5rem 5rem;
     background: var(--cream);
     position: relative; overflow: hidden;
+  }
+  .hero-inner {
+    width: 100%;
+    max-width: 1000px;
   }
   .hero::before {
     content: '';
@@ -464,22 +469,24 @@
 
 <!-- HERO -->
 <section class="hero">
-  <p class="hero-eyebrow">25년 현장 전문가의 소기업 전용 실전 가이드</p>
-  <h1>광고비 쓰기 전에<br><em>먼저 읽어야 할</em><br>마케팅 리포트</h1>
-  <p class="hero-sub">
-    수천만 원짜리 대행사 전략이 아닙니다.<br>
-    수십~수백만 원 예산으로 내일 당장 실행할 수 있는,
-    소기업·소상공인만을 위한 현장 밀착형 마케팅 가이드입니다.
-  </p>
-  <div class="hero-actions">
-    <a class="btn-primary" href="#reports">리포트 둘러보기</a>
-    <a class="btn-secondary" href="#contents">목차 미리보기</a>
-  </div>
-  <div class="hero-meta">
-    <div class="meta-item"><strong>연 2회</strong>상·하반기 정기 발행</div>
-    <div class="meta-item"><strong>6개+</strong>업종별 맞춤 구성</div>
-    <div class="meta-item"><strong>25년</strong>현장 경험 기반</div>
-    <div class="meta-item"><strong>입금 즉시</strong>이메일 발송</div>
+  <div class="hero-inner">
+    <p class="hero-eyebrow">25년 현장 전문가의 소기업 전용 실전 가이드</p>
+    <h1>광고비 쓰기 전에<br><em>먼저 읽어야 할</em><br>마케팅 리포트</h1>
+    <p class="hero-sub">
+      수천만 원짜리 대행사 전략이 아닙니다.<br>
+      수십~수백만 원 예산으로 내일 당장 실행할 수 있는,
+      소기업·소상공인만을 위한 현장 밀착형 마케팅 가이드입니다.
+    </p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#reports">리포트 둘러보기</a>
+      <a class="btn-secondary" href="#contents">목차 미리보기</a>
+    </div>
+    <div class="hero-meta">
+      <div class="meta-item"><strong>연 2회</strong>상·하반기 정기 발행</div>
+      <div class="meta-item"><strong>6개+</strong>업종별 맞춤 구성</div>
+      <div class="meta-item"><strong>25년</strong>현장 경험 기반</div>
+      <div class="meta-item"><strong>입금 즉시</strong>이메일 발송</div>
+    </div>
   </div>
 </section>
 

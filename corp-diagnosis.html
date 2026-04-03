@@ -941,6 +941,249 @@ footer {
   transform: translateY(0);
 }
 
+/* ── MODAL OVERLAY ── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal-box {
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  width: 100%;
+  max-width: 560px;
+  position: relative;
+  transform: translateY(24px);
+  transition: transform 0.35s ease;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+.modal-overlay.active .modal-box {
+  transform: translateY(0);
+}
+
+.modal-header {
+  padding: 32px 36px 24px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.modal-header-left .modal-label {
+  font-family: 'Courier Prime', monospace;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.modal-header-left .modal-label::before {
+  content: '';
+  width: 4px; height: 4px;
+  background: var(--gold);
+  border-radius: 50%;
+}
+.modal-header-left h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 28px;
+  color: var(--white);
+  line-height: 1.1;
+}
+.modal-close {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  width: 36px; height: 36px;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s;
+  line-height: 1;
+}
+.modal-close:hover { border-color: var(--gold); color: var(--gold); }
+
+.modal-body {
+  padding: 32px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.modal-tier-select {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.tier-btn {
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 12px 8px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s;
+}
+.tier-btn:hover { border-color: var(--border-light); color: var(--white); }
+.tier-btn.selected { border-color: var(--gold); color: var(--gold); background: var(--gold-dim); }
+.tier-btn .tb-name {
+  font-family: 'Courier Prime', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 4px;
+}
+.tier-btn .tb-price {
+  font-size: 11px;
+  color: inherit;
+  opacity: 0.8;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.form-label {
+  font-family: 'Courier Prime', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.form-label .required {
+  color: var(--gold);
+  font-size: 12px;
+}
+.form-input, .form-select, .form-textarea {
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--white);
+  padding: 14px 16px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: var(--gold);
+}
+.form-input::placeholder, .form-textarea::placeholder { color: var(--text-muted); }
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b6660' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  cursor: pointer;
+}
+.form-select option { background: var(--surface); }
+.form-textarea { resize: vertical; min-height: 80px; line-height: 1.6; }
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.form-privacy {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  background: var(--black);
+}
+.form-privacy strong { color: var(--gold); }
+
+.modal-footer {
+  padding: 0 36px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.modal-submit {
+  font-family: 'Courier Prime', monospace;
+  font-size: 13px;
+  letter-spacing: 3px;
+  background: var(--gold);
+  color: var(--black);
+  border: none;
+  padding: 18px;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.25s;
+  font-weight: 700;
+}
+.modal-submit:hover { background: var(--gold-light); }
+.modal-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+.modal-cancel {
+  font-family: 'Courier Prime', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 12px;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.2s;
+}
+.modal-cancel:hover { border-color: var(--border-light); color: var(--white); }
+
+/* ── SUCCESS STATE ── */
+.modal-success {
+  padding: 60px 36px;
+  text-align: center;
+  display: none;
+}
+.modal-success.show { display: block; }
+.success-icon {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+.success-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 28px;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.success-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+.success-ref {
+  font-family: 'Courier Prime', monospace;
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: 2px;
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: 1px solid var(--gold-dim);
+  display: inline-block;
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
   .why-grid, .report-grid { grid-template-columns: 1fr 1fr; }
@@ -964,6 +1207,115 @@ footer {
 </style>
 </head>
 <body>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-box">
+
+    <!-- Header -->
+    <div class="modal-header">
+      <div class="modal-header-left">
+        <div class="modal-label">REQUEST REPORT</div>
+        <h3 id="modalTitle">보고서 신청</h3>
+      </div>
+      <button class="modal-close" onclick="closeModal()" aria-label="닫기">✕</button>
+    </div>
+
+    <!-- Form body -->
+    <div id="modalForm">
+      <div class="modal-body">
+
+        <!-- 요금제 선택 -->
+        <div class="form-group">
+          <div class="form-label">요금제 선택 <span class="required">*</span></div>
+          <div class="modal-tier-select">
+            <button class="tier-btn" onclick="selectTier(this, 'Standard')" data-tier="Standard">
+              <span class="tb-name">WHITE</span>
+              <span class="tb-price">₩580,000</span>
+            </button>
+            <button class="tier-btn selected" onclick="selectTier(this, 'Premium')" data-tier="Premium">
+              <span class="tb-name">BLACK</span>
+              <span class="tb-price">₩1,280,000</span>
+            </button>
+            <button class="tier-btn" onclick="selectTier(this, 'Private')" data-tier="Private">
+              <span class="tb-name">GOLD</span>
+              <span class="tb-price">₩2,800,000</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 기업명 -->
+        <div class="form-group">
+          <label class="form-label" for="inputCompany">관심 기업명 / 종목코드 <span class="required">*</span></label>
+          <input class="form-input" id="inputCompany" type="text" placeholder="예: SK하이닉스 / 000660">
+        </div>
+
+        <!-- 이름 + 연락처 -->
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="inputName">신청자 성함 <span class="required">*</span></label>
+            <input class="form-input" id="inputName" type="text" placeholder="홍길동">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="inputPhone">연락처 <span class="required">*</span></label>
+            <input class="form-input" id="inputPhone" type="tel" placeholder="010-0000-0000">
+          </div>
+        </div>
+
+        <!-- 이메일 -->
+        <div class="form-group">
+          <label class="form-label" for="inputEmail">이메일 <span class="required">*</span></label>
+          <input class="form-input" id="inputEmail" type="email" placeholder="example@email.com">
+        </div>
+
+        <!-- 투자자 유형 -->
+        <div class="form-group">
+          <label class="form-label" for="inputType">투자자 유형</label>
+          <select class="form-select" id="inputType">
+            <option value="">선택 안함</option>
+            <option value="개인투자자">개인투자자</option>
+            <option value="전문투자자">전문투자자</option>
+            <option value="기관투자자">기관투자자</option>
+            <option value="VC/PE">VC / PE</option>
+            <option value="법인">법인</option>
+            <option value="기타">기타</option>
+          </select>
+        </div>
+
+        <!-- 추가 요청사항 -->
+        <div class="form-group">
+          <label class="form-label" for="inputNote">추가 요청사항</label>
+          <textarea class="form-textarea" id="inputNote" placeholder="특별히 집중 분석을 원하는 항목이나 기타 요청사항을 남겨주세요."></textarea>
+        </div>
+
+        <!-- 개인정보 안내 -->
+        <div class="form-privacy">
+          <strong>📌 개인정보 수집 안내</strong><br>
+          수집 항목: 성함, 연락처, 이메일 / 수집 목적: 보고서 신청 접수 및 발송 안내 / 보유 기간: 보고서 발송 완료 후 6개월. 위 정보는 보고서 발송 외 목적으로 사용되지 않습니다.
+        </div>
+
+      </div>
+
+      <!-- Footer buttons -->
+      <div class="modal-footer">
+        <button class="modal-submit" id="submitBtn" onclick="submitForm()">신청 접수하기 →</button>
+        <button class="modal-cancel" onclick="closeModal()">취소</button>
+      </div>
+    </div>
+
+    <!-- Success state -->
+    <div class="modal-success" id="modalSuccess">
+      <div class="success-icon">✦</div>
+      <div class="success-title">신청이 접수되었습니다</div>
+      <div class="success-desc">
+        영업일 기준 <strong style="color:var(--white)">48시간 내</strong>에 입력하신 연락처로<br>
+        타당성 검토 결과를 안내해 드리겠습니다.
+      </div>
+      <div class="success-ref" id="successRef">REF# —</div>
+    </div>
+
+  </div>
+</div>
 
 <!-- NAV -->
 <nav id="nav">
@@ -1380,32 +1732,207 @@ footer {
 </footer>
 
 <script>
-// Nav scroll effect
+/* ──────────────────────────────────────────────
+   FIREBASE REALTIME DATABASE 연동 설정
+   아래 firebaseConfig 값을 실제 프로젝트 값으로 교체 후
+   주석 처리된 Firebase SDK import 태그를 활성화하세요.
+   ────────────────────────────────────────────── */
+
+// ① Firebase SDK 로드 (사용 시 주석 해제)
+// <script type="module"> 방식으로 사용하거나 아래 cdn 스크립트 추가
+// import { initializeApp } from "https://www.gstatic.com/firebasejs/10.x.x/firebase-app.js";
+// import { getDatabase, ref, push, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.x.x/firebase-database.js";
+
+// ② Firebase 설정 (실제 값으로 교체)
+const FIREBASE_CONFIG = {
+  // apiKey: "YOUR_API_KEY",
+  // authDomain: "YOUR_PROJECT.firebaseapp.com",
+  // databaseURL: "https://YOUR_PROJECT-default-rtdb.asia-southeast1.firebasedatabase.app",
+  // projectId: "YOUR_PROJECT_ID",
+};
+
+// ③ Firebase 저장 함수 (SDK 연동 시 주석 해제 후 사용)
+async function saveToFirebase(data) {
+  // const app = initializeApp(FIREBASE_CONFIG);
+  // const db = getDatabase(app);
+  // const dbRef = ref(db, 'report_requests');
+  // await push(dbRef, { ...data, createdAt: serverTimestamp() });
+
+  // ── 임시: localStorage fallback (개발/테스트용) ──
+  const stored = JSON.parse(localStorage.getItem('report_requests') || '[]');
+  stored.push(data);
+  localStorage.setItem('report_requests', JSON.stringify(stored));
+  console.table(data);
+}
+
+/* ── 상태 ── */
+let selectedTier = 'Premium';
+
+/* ── 모달 열기/닫기 ── */
+function openModal(presetCompany = '') {
+  const overlay = document.getElementById('modalOverlay');
+  overlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+
+  // CTA 입력값 pre-fill
+  if (presetCompany) {
+    document.getElementById('inputCompany').value = presetCompany;
+  }
+
+  // 폼 초기화 (성공 화면이 열려 있던 경우 리셋)
+  resetModal();
+}
+
+function closeModal() {
+  const overlay = document.getElementById('modalOverlay');
+  overlay.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function resetModal() {
+  document.getElementById('modalForm').style.display = '';
+  document.getElementById('modalSuccess').classList.remove('show');
+  document.getElementById('submitBtn').disabled = false;
+  document.getElementById('submitBtn').textContent = '신청 접수하기 →';
+}
+
+// ESC 키로 닫기
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
+});
+
+// 오버레이 클릭으로 닫기
+document.getElementById('modalOverlay').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeModal();
+});
+
+/* ── 요금제 선택 ── */
+function selectTier(btn, tier) {
+  document.querySelectorAll('.tier-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  selectedTier = tier;
+}
+
+/* ── 유효성 검사 ── */
+function validate() {
+  const fields = [
+    { id: 'inputCompany', label: '관심 기업명' },
+    { id: 'inputName',    label: '신청자 성함' },
+    { id: 'inputPhone',   label: '연락처' },
+    { id: 'inputEmail',   label: '이메일' },
+  ];
+  for (const f of fields) {
+    const el = document.getElementById(f.id);
+    if (!el.value.trim()) {
+      el.focus();
+      el.style.borderColor = '#c0392b';
+      setTimeout(() => el.style.borderColor = '', 1600);
+      showToast(`${f.label}을(를) 입력해 주세요.`);
+      return false;
+    }
+  }
+  const emailEl = document.getElementById('inputEmail');
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value.trim())) {
+    emailEl.focus();
+    emailEl.style.borderColor = '#c0392b';
+    setTimeout(() => emailEl.style.borderColor = '', 1600);
+    showToast('올바른 이메일 주소를 입력해 주세요.');
+    return false;
+  }
+  return true;
+}
+
+/* ── 제출 ── */
+async function submitForm() {
+  if (!validate()) return;
+
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = '처리 중…';
+
+  const refNum = 'AB-' + Date.now().toString(36).toUpperCase();
+  const payload = {
+    ref:        refNum,
+    tier:       selectedTier,
+    company:    document.getElementById('inputCompany').value.trim(),
+    name:       document.getElementById('inputName').value.trim(),
+    phone:      document.getElementById('inputPhone').value.trim(),
+    email:      document.getElementById('inputEmail').value.trim(),
+    investorType: document.getElementById('inputType').value,
+    note:       document.getElementById('inputNote').value.trim(),
+    submittedAt: new Date().toISOString(),
+  };
+
+  try {
+    await saveToFirebase(payload);
+    showSuccess(refNum);
+  } catch (err) {
+    console.error(err);
+    showToast('오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
+    btn.disabled = false;
+    btn.textContent = '신청 접수하기 →';
+  }
+}
+
+function showSuccess(refNum) {
+  document.getElementById('modalForm').style.display = 'none';
+  document.getElementById('successRef').textContent = 'REF# ' + refNum;
+  document.getElementById('modalSuccess').classList.add('show');
+}
+
+/* ── 토스트 메시지 ── */
+let toastTimer;
+function showToast(msg) {
+  let toast = document.getElementById('auToast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'auToast';
+    toast.style.cssText = `
+      position:fixed; bottom:32px; left:50%; transform:translateX(-50%);
+      background:#1a1a1a; border:1px solid var(--border-light);
+      color:var(--white); font-family:'Noto Sans KR',sans-serif;
+      font-size:13px; padding:12px 24px; z-index:9000;
+      opacity:0; transition:opacity 0.2s; white-space:nowrap;
+      border-left: 3px solid var(--gold);
+    `;
+    document.body.appendChild(toast);
+  }
+  toast.textContent = msg;
+  toast.style.opacity = '1';
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => { toast.style.opacity = '0'; }, 3000);
+}
+
+/* ── Nav scroll ── */
 window.addEventListener('scroll', () => {
   document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
 });
 
-// Reveal on scroll
+/* ── Reveal on scroll ── */
 const reveals = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver((entries) => {
+const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry, i) => {
     if (entry.isIntersecting) {
       setTimeout(() => entry.target.classList.add('visible'), i * 80);
     }
   });
 }, { threshold: 0.08 });
-reveals.forEach(el => observer.observe(el));
+reveals.forEach(el => revealObserver.observe(el));
 
-// CTA submit
+/* ── CTA 섹션 "신청 →" 버튼 ── */
 function handleSubmit() {
   const val = document.getElementById('companyInput').value.trim();
-  if (!val) {
-    alert('관심 기업명 또는 종목코드를 입력해 주세요.');
-    return;
-  }
-  alert(`"${val}" 보고서 신청이 접수되었습니다.\n영업일 기준 48시간 내 연락드리겠습니다.\n감사합니다.`);
+  openModal(val);
   document.getElementById('companyInput').value = '';
 }
+
+/* ── 모든 "신청하기" 버튼에 모달 연결 ── */
+document.querySelectorAll('a[href="#contact"]').forEach(el => {
+  el.addEventListener('click', e => {
+    e.preventDefault();
+    openModal();
+  });
+});
 </script>
 </body>
 </html>

@@ -396,7 +396,33 @@
   @media (max-width: 680px) {
     nav { padding: 1rem 1.2rem; }
     .nav-links { display: none; }
-    .hero { padding: 7rem 1.5rem 4rem; }
+  
+    /* hero 모바일 최적화 */
+    .hero {
+      padding: 7rem 1.5rem 4rem;
+      align-items: center;      /* 가운데 정렬 */
+      text-align: center;
+    }
+    .hero h1 { max-width: 100%; }
+    .hero-sub {
+      font-size: 0.95rem;
+      max-width: 100%;
+      text-align: center;
+    }
+    .hero-actions {
+      justify-content: center;  /* 버튼 가운데 */
+      flex-direction: column;   /* 버튼 세로 배치 */
+      align-items: center;
+      width: 100%;
+    }
+    .btn-primary { width: 100%; text-align: center; }
+    .hero-meta {
+      gap: 1.5rem;              /* 간격 줄이기 */
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .meta-item { text-align: center; min-width: 100px; }
+  
     section { padding: 4rem 1.5rem; }
     .why-item:nth-child(3n) { border-right: 0.5px solid var(--border); }
     .why-item:nth-child(odd) { border-right: 0.5px solid var(--border); }
